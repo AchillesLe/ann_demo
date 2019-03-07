@@ -22,13 +22,12 @@
             }
         }
         protected function prepareURL(){
-            $request = trim( $_SERVER['REQUEST_URI'] , '/' );
+            $request = trim( $_SERVER['REQUEST_URI'] ,'/' );
             if( !empty($request) ){
-                $url = explode('/',$request);
-                $this->controller = isset($url[0]) ? $url[0].'Controller' : 'homeController';
-                $this->action = isset($url[1]) ? $url[1] : 'index';
-                unset($url[0],$url[1]);
-                $this->params = !empty( $url ) ? array_values($url) : [];
+                $url = explode('?',$request);
+                $main_url = explode('/',$url[0]);
+                $this->controller =  isset($main_url[0]) ? $main_url[0].'Controller' : 'homeController';
+                $this->action = isset($main_url[1]) ? $main_url[1] : 'index';
             }
         }
     }

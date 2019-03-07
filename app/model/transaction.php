@@ -34,14 +34,13 @@
             return '';
         }
 
-        // function add( $id_feed , $content = '' ){
-        //     $date = date('Y-m-d H:i:s');
-        //     $sql = "INSERT INTO $this->table (id_feedName , date , content ) VALUES( '$id_feed' , '$date'  , '$content' ) ";
-        //     $result = $this->conn->query( $sql );
-        //     if( $result ){
-        //         return true;
-        //     }
-        //     return false;
-        // }
+        function add( $id , $idreciever , $money , $note = ''){
+            $date = date('Y-m-d H:i:s');
+            $sql = "INSERT INTO $this->table (id_head,id_tail,amount,date,note)
+                    VALUES ( ? , ? , ? , ? , ? ) ";
+            $stm = $this->conn->prepare($sql);
+            $result =  $stm->execute( [ $id , $idreciever , $money , $date , $note] )  ;
+            return $result;
+        }
     }
 ?>

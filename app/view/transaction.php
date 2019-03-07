@@ -11,7 +11,7 @@
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mb-4">
       <h1 class="h3 mb-0 text-gray-800">Transaction</h1>
-      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#addModal">  Add transaction</a>
+      <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#addtran">  Add transaction</a>
     </div>
     <!-- DataTales Example -->
     <div class="card shadow mb-4">
@@ -35,9 +35,9 @@
                  
                 <tbody>
                     <?php 
-                        if( $data && count( $data ) > 0 ){
+                        if( $data && count( $data['trans'] ) > 0 ){
                             $index = 1;
-                            foreach(  $data as $tran){
+                            foreach(  $data['trans'] as $tran){
                                 echo "<tr>";
                                 echo    "<td>$index</td>";
                                 echo    "<td>".$tran['id_head']."</td>";
@@ -66,14 +66,32 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Add Your Feedback</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Add Your Transaction</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
-                        <textarea class="form-control" id="note" rows="3" ></textarea>
+                        <label for="form-control">Receiver</label>
+                        <select id="reciever" class='form-control' > 
+                         <option value="0">---select receiver---</option>";
+                            <?php 
+                             if( $data && count( $data['users'] ) > 0 ){
+                                
+                                foreach(  $data['users'] as $user){
+                                  echo  "<option value=".$user['id'].">".$user['name']."</option>";
+                                }
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="form-control">Amount of money </label>
+                        <input class="form-control" id="money" placehoder/>
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" id="note" rows="3" placeholder="note" ></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">

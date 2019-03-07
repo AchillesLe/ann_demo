@@ -22,6 +22,12 @@
             return $user;
 
         }
+        public function list_user_without($id){
+            $sql = "SELECT * FROM $this->table WHERE id != $id";
+            $result = $this->conn->query( $sql );
+            $data = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $data;
+        }
 
     }
 ?>
