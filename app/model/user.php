@@ -3,6 +3,12 @@
 
         private $table = 'user';
 
+        public function getinfo( $id ){
+            $sql = "SELECT * FROM $this->table WHERE id = $id ";
+            $result = $this->conn->query( $sql );
+            $data = $result->fetchAll(PDO::FETCH_ASSOC);
+            return $data[0];
+        }
         function login( $email , $pass ){
             $user = null;
 

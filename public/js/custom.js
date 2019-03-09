@@ -29,27 +29,27 @@ $( document ).ready(function(){
         $('#addModal').modal('toggle');  
     });
 
-    $('#addTransaction').on('click',function(){
-        var idreciever = $('#reciever :selected').val();
-        var note = $('#note').val();
-        var money = $('#money').val();
-        if( parseInt(idreciever) > 0){
+    // $('#addTransaction').on('click',function(){
+    //     var idreciever = $('#reciever :selected').val();
+    //     var note = $('#note').val();
+    //     var money = $('#money').val();
+    //     if( parseInt(idreciever) > 0){
              
-            $.ajax({
-                url:'transaction/add',
-                dataType : 'json',
-                type : 'GET',
-                data : { id : idreciever , money : money , note : note } ,
-                success:function(result){
-                    if(result){
-                        window.location.href = '/transaction';
-                    }
-                },
-                error: function(jqXHR, textStatus, errorThrown){
-                    console.log(result);
-                }
-            });
-        } 
-        $('#addModal').modal('toggle');  
-    });
+    //         $.ajax({
+    //             url:'transaction/confirm',
+    //             dataType : 'json',
+    //             type : 'GET',
+    //             data : { id : idreciever , money : money , note : note } ,
+    //             success:function(result){
+    //                 if(result){
+    //                     window.location.href = '/transaction';
+    //                 }
+    //             },
+    //             error: function(jqXHR, textStatus, errorThrown){
+    //                 console.log(result);
+    //             }
+    //         });
+    //     } 
+    //     $('#addModal').modal('toggle');  
+    // });
 });

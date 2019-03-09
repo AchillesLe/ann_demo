@@ -24,9 +24,9 @@
                 <thead>
                     <tr>
                         <th>#</th>
-                        <th>Name</th>
-                        <th>Date</th>
-                        <th>Content</th>
+                        <th>Tên</th>
+                        <th>Ngày</th>
+                        <th>Nội dung</th>
                     </tr>
                 </thead>
                  

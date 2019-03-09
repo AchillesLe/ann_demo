@@ -12,5 +12,6 @@
   spl_autoload_register('spl_autoload',false);
   session_start();
   date_default_timezone_set("Asia/Ho_Chi_Minh");
+  require_once(CORE.'function.php');
   new Application();
 ?>

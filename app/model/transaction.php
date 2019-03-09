@@ -25,6 +25,7 @@
             }
             return $data;
         }
+
         private function search( $id , $array ){
             foreach( $array as $key => $value ){
                 if( $id == $value['id']){
@@ -34,13 +35,25 @@
             return '';
         }
 
+        private function add_sub_amount( $id , $money ){
+            $sql = " UPDATE user  SET totalMoney = totalMoney + $money WHERE id = $id  ";
+            $result = $this->conn->query( $sql );
+            return $result;
+        }
+
         function add( $id , $idreciever , $money , $note = ''){
             $date = date('Y-m-d H:i:s');
             $sql = "INSERT INTO $this->table (id_head,id_tail,amount,date,note)
                     VALUES ( ? , ? , ? , ? , ? ) ";
             $stm = $this->conn->prepare($sql);
             $result =  $stm->execute( [ $id , $idreciever , $money , $date , $note] )  ;
-            return $result;
+            if( $result ){
+                $new_amout = ((double)$money)*(-1);
+                if( $this->add_sub_amount( $id , $new_amout ) && $this->add_sub_amount( $idreciever ,  (double)$money )  ){
+                    return true;
+                }
+            }
+            return false;
         }
     }
 ?>

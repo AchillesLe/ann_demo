@@ -23,3 +23,17 @@
 .table-tran thead tr th:nth-child(3){
     width: 20%;
 } 
+
+.confim{
+    margin-bottom: 20px;
+}
+.btn-confim{
+    margin-right: 30px;
+    width: 100px;
+}
+.btn-cancel{
+    width: 100px;
+}
+.btn{
+    cursor: pointer;
+}
